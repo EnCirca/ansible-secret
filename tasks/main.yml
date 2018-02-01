@@ -5,13 +5,6 @@
     name: debops
     state: present
 
-- name: Debug
-  debug:
-    msg: "{{ item }}"
-  with_flattened:
-    - '{{ secret__directories }}'
-    - '{{ secret_directories | d([]) }}'
-
 - name: Create secret directories on Ansible Controller
   file:
     path: '{{ secret + "/" + item }}'
